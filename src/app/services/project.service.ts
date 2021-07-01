@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,5 +10,9 @@ export class ProjectService {
 
   getProject() {
     return this.http.get('/api/project/GetProject');
+  }
+
+  getProjects() {
+    return this.http.get('https://localhost:44309/api/project/getprojects');
   }
 }

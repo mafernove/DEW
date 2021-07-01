@@ -7,17 +7,19 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  Loginform= this.fl.group({
+
+  loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
-  constructor(private fl: FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
+
   onSubmit() {
-    if(this.Loginform.valid){
-      console.log(this.Loginform.value);
-    }else{
-      alert("Email o contraseña no valido");
+    if(this.loginForm.valid) {
+      console.log(this.loginForm.value);
+    } else {
+      alert("Formulario no valido");
     }
   }
 

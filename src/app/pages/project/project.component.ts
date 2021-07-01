@@ -9,23 +9,24 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
-  project:any = [];
-  apartment:any = [];
+
+  project = [];
+  apartments = [];
 
   constructor(private readonly projectService: ProjectService,
               private readonly apartmentService: ApartmentService,
               private activeRoute: ActivatedRoute) { }
 
-  getProjectById(id: number)  {
+  getProjectById(id: number) {
     this.projectService.getProject().subscribe((rest: any) => {
-      this.project  = rest.data.filter((item: {id: number}) => item.id == id);
+      this.project = rest.data.filter((item: { id: number }) => item.id == id);
       console.log(this.project);
     })
   }
 
-  getApartmentByProjects(id:number) {
+  getApartmentsByProject(id: number) {
     this.apartmentService.getApartments().subscribe((rest: any) => {
-      this.apartment = rest.data.filter((item: {projectId: number}) => item.projectId == id);
+      this.apartments = rest.data.filter((item: { projectId: number }) => item.projectId == id);
     })
   }
 
@@ -33,9 +34,8 @@ export class ProjectComponent implements OnInit {
     this.activeRoute.params.subscribe((params: Params) => {
       if(params.id) {
         this.getProjectById(params.id);
-        this.getApartmentByProjects(params.id)
+        this.getApartmentsByProject(params.id);
       }
     })
   }
-
 }

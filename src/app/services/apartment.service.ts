@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApartmentService {
 
-  constructor(private readonly http:HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getApartments() {
     return this.http.get('/api/apartment/GetApartments');

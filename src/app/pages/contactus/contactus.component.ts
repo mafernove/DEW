@@ -7,20 +7,22 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent implements OnInit {
-contactusForm= this.fb.group({
+  
+  contactusForm = this.fb.group({
     person: this.fb.group({
       firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      lastname: ['', Validators.required]
     }),
     email: ['', [Validators.required, Validators.email]],
     message: ['']
   });
 
   constructor(private fb: FormBuilder) { }
+
   onSubmit() {
-    if(this.contactusForm.valid){
+    if(this.contactusForm.valid) {
       console.log(this.contactusForm.value);
-    }else{
+    } else {
       alert("Formulario no valido");
     }
   }

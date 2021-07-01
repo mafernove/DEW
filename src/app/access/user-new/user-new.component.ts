@@ -7,18 +7,20 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./user-new.component.css']
 })
 export class UserNewComponent implements OnInit {
-  usernewForm= this.fb.group({
-    dni: ['', Validators.required, Validators.minLength(8), Validators.maxLength(8)],
-    nombre: ['', Validators.required, Validators.minLength(3)],
-    apellido: ['', Validators.required, Validators.minLength(3)],
 
+  usernewForm = this.fb.group({
+    dni: ['', Validators.required],
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    perfil: ['', Validators.required]
+  });  
 
-  })
   constructor(private fb: FormBuilder) { }
+
   onSubmit() {
-    if(this.usernewForm.valid){
-      console.log(this.usernewForm.value);
-    }else{
+    if(this.usernewForm.valid) {
+      console.log(this.usernewForm.value)
+    } else {
       alert("Formulario no valido");
     }
   }

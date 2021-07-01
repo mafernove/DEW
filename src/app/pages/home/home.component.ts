@@ -8,7 +8,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class HomeComponent implements OnInit {
 
-  projects:any = [];
+  projects = [];
 
   constructor(private readonly projectService: ProjectService) { }
 
@@ -19,8 +19,16 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  getProjectsBE() {
+    this.projectService.getProjects().subscribe((rest: any) => {
+      console.log(rest.data);
+      this.projects = rest.data;
+    })
+  }
+
   ngOnInit(): void {
-    this.getProjects();
+    //this.getProjects();
+    this.getProjectsBE();
   }
 
 }
